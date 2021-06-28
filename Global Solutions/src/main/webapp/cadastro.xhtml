@@ -9,7 +9,7 @@
                 text-align: center;
             }
 
-            h3 {
+            h3, h1 {
                 margin-top: 0;
                 text-align: center;
             }
@@ -23,62 +23,24 @@
 
         </h:outputStylesheet>
     </h:head>
-    <h:body>
+    <h:body style="background-image: url('https://images.unsplash.com/photo-1543059080-f9b1272213d5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8')">
         <p:outputPanel>
-            <h3>Gulliver Traveller</h3>
+            <h1>Gulliver Traveller</h1>
+            <br/>
             <div class="ui-g">
                 <div class="ui-g-2"/>
                 <div class="ui-g-8">
                     <h:form id="usuarios">
                          <p:growl id="growl" sticky="true" />
 
-                        <p:dataTable id="usuarioLista" var="usuario" value="#{usuarioBean.usuarios}">
-                            <p:column headerText="Id">
-                                <h:outputText value="#{usuario.id}"/>
-                            </p:column>
-
-                            <p:column headerText="Nome">
-                                <p:inputText id="nomeInput" value="#{usuario.nome}"/>
-                            </p:column>
-
-                          <p:column headerText="Data de Nascimento">
-                            <h:outputText value="#{usuario.dataNascimento}">
-                              <f:convertDateTime type="localDate" pattern="dd.MM.yyyy"/>
-                            </h:outputText>
-                          </p:column>
-
-                            <p:column headerText="Email">
-                                <p:inputText id="emailInput" value="#{usuario.email}"/>
-                            </p:column>
-
-                          <p:column headerText="Senha">
-                            <p:inputText id="senhaInput" value="#{usuario.senha}"/>
-                          </p:column>
-
-                            <p:column headerText="Usuario ID">
-                                <h:outputText value="#{usuario.usuarioId}"/>
-                            </p:column>
-
-                            <p:column>
-                                <p:commandButton update="usuarioLista" value="Delete" icon="ui-icon-closethick"
-                                                 action="#{usuarioBean.delete(usuario)}"
-                                                 styleClass="ui-priority-primary">
-                                </p:commandButton>
-                            </p:column>
-                        </p:dataTable>
                         <br/>
-                        <p:commandButton style="float: right" id="save" value="Save" tyleClass="ui-priority-primary"
-                                         action="#{usuarioBean.update}" icon="ui-icon-disk" update="growl">
-                            <f:ajax execute="@form" render="@form"/>
-                        </p:commandButton>
-                      <p:commandButton value="TESTE" action="login"/>
                     </h:form>
                 </div>
                 <div class="ui-g-2">
                 </div>
             </div>
             <h3>Cadastro</h3>
-            <div class="ui-g">
+            <div class="ui-g" style="background-color: azure">
                 <div class="ui-g-2">
                 </div>
                 <div class="ui-g-8">
@@ -107,10 +69,9 @@
                           <p:inputText id="senha" type="password" value="#{usuarioBean.usuario.senha}"/>
                           <p:message for="senha"/>
 
-
-                            <p:commandButton update="@form :usuarios:usuarioLista" value="Add"
-                                             action="#{usuarioBean.add}">
+                            <p:commandButton value="Finalizar Cadastro" action="#{usuarioBean.add}">
                             </p:commandButton>
+
                         </h:panelGrid>
                     </h:form>
                 </div>

@@ -1,4 +1,4 @@
-package de.rieckpil.blog.customers.model;
+package br.com.fiap.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

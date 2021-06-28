@@ -7,6 +7,20 @@
       xmlns:p="http://primefaces.org/ui">
 <f:view>
   <h:head>
+    <h:outputStylesheet>
+      h3 {
+        margin-top: 0;
+        text-align: center;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        -webkit-box-sizing:border-box;
+        -moz-box-sizing: border-box;
+      }
+
+    </h:outputStylesheet>
   </h:head>
   <h:body style="background-image: url('https://c1.wallpaperflare.com/preview/976/341/252/brazil-buildings-photos-public-domain.jpg')">
     <p:dialog visible="true" width="400" height="500" header="Acessar o Sistema" showHeader="false" modal="true" resizable="false">
@@ -15,13 +29,19 @@
         <h:panelGrid cellspacing="10">
           <h3>LOGIN</h3> <br/>
           <h4>Digite seu email e senha para acessar o sistema:</h4>
-          <p:messages id="messagesLogin"/>
-          <p:inputText placeholder="Email" value="#{usuarioBean.usuario.email}" size="40" required="true" requiredMessage="Campo Login é obrigatório"/>
-          <p:password placeholder="Senha" value="#{usuarioBean.usuario.senha}" size="40" required="true" requiredMessage="Campo Senha é obrigatório"/>
 
-            <p:commandButton value="ACESSAR"/>
-            <p:commandButton value="CADASTRAR" action="cadastro"/>
+          <p:outputLabel for="email" value="Email"/>
+          <p:inputText id="email" type="text" placeholder="Email" value="#{usuarioBean.usuario.email}" size="40" requiredMessage="Campo Login é obrigatório"/> <br/>
+          <p:outputLabel for="senha" value="Senha"/>
+          <p:inputText id="senha" type="password" placeholder="Senha" value="#{usuarioBean.usuario.senha}" size="40" requiredMessage="Campo Senha é obrigatório"/>
 
+          <p:column>
+            <p:commandButton value="ACESSAR" id="ponto-turistico" action="/ponto-turistico.xhtml?faces-redirect=true" ajax="false"/>
+          </p:column>
+
+          <p:column>
+            <p:commandButton value="CADASTRAR" id="cadastrar" action="/cadastro.xhtml?faces-redirect=true" ajax="false" />
+          </p:column>
 
         </h:panelGrid>
       </h:form>

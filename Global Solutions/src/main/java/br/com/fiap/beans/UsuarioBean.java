@@ -1,7 +1,7 @@
-package de.rieckpil.blog.customers.beans;
+package br.com.fiap.beans;
 
-import de.rieckpil.blog.customers.dao.UsuarioDAO;
-import de.rieckpil.blog.customers.model.Usuario;
+import br.com.fiap.dao.UsuarioDAO;
+import br.com.fiap.model.Usuario;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -33,10 +34,11 @@ public class UsuarioBean implements Serializable {
     usuarios.remove(usuario);
   }
 
-  public void add() {
+  public void add() throws IOException {
     usuarioDao.addNewUsuario(usuario);
     this.usuarios = usuarioDao.loadAllUsuarios();
     this.usuario = new Usuario();
+    FacesContext.getCurrentInstance().getExternalContext().redirect("ponto-turistico.xhtml");
   }
 
   public void update() {

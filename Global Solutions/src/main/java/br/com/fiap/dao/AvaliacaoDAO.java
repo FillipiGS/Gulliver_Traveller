@@ -1,9 +1,7 @@
-package de.rieckpil.blog.customers.dao;
+package br.com.fiap.dao;
 
 
-import de.rieckpil.blog.customers.model.Avaliacao;
-import de.rieckpil.blog.customers.model.Customer;
-import de.rieckpil.blog.customers.model.Usuario;
+import br.com.fiap.model.Avaliacao;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

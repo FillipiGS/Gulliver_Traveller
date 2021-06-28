@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+   <h:head>
+      <h:outputStylesheet>
+         th, td {
+            text-align: center;
+         }
+
+         h3, h1 {
+            margin-top: 0;
+            text-align: center;
+         }
+
+         input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing:border-box;
+            -moz-box-sizing: border-box;
+         }
+
+      </h:outputStylesheet>
+   </h:head>
+   <h:body style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Webysther_20190304150324_-_Parque_da_Independ%C3%AAncia.jpg/1280px-Webysther_20190304150324_-_Parque_da_Independ%C3%AAncia.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
+      <p:outputPanel>
+         <h1>Gulliver Traveller - Categoria Parques
+         </h1>
+         <div class="ui-g">
+            <div class="ui-g-2"/>
+            <div class="ui-g-8" style="color: azure">
+
+               <div class="ui-g-6">
+                  <h:graphicImage library="images" name="parque-independencia.jpg" width="400px" height="300px"/>
+               </div>
+
+               <strong>BREVE DESCRIÇÃO:</strong> <br/>
+               O Parque da Independência, inaugurado em 1989, nas margens do córrego do bairro do Ipiranga, na cidade de São Paulo, faz parte do patrimônio histórico cultural brasileiro devido ao Grito da Independência do país, ali proclamada por D. Pedro I.
+               <br/><br/>
+               <strong>HORÁRIO DE FUNCIONAMENTO</strong>
+               <br/><br/>
+               SEG - DOM 06HRS - 18HRS
+               <br/><br/>
+               <strong>ENDEREÇO:</strong>
+               <br/><br/>
+               Av. Nazaré, s/n - Ipiranga, São Paulo - SP, 04263-200
+               <br/><br/>
+               <strong>PREÇOS APLICADOS:</strong> <br/>
+               GRATUITO
+
+               <h:form id="avaliacoes">
+                  <p:growl id="growl" sticky="true" />
+
+                  <p:dataTable id="avaliacaoLista" var="avaliacao" value="#{avaliacaoBean.avaliacoes}">
+
+                     <p:column headerText="Comentários">
+                        <p:inputText id="comentarioInput" value="#{avaliacao.comentario}"/>
+                     </p:column>
+
+                     <p:column headerText="Nota">
+                        <p:inputText id="notaInput" value="#{avaliacao.nota}"/>
+                     </p:column>
+
+                     <p:column>
+                        <p:commandButton update="avaliacaoLista" value="Delete" icon="ui-icon-closethick"
+                                         action="#{avaliacaoBean.delete(avaliacao)}"
+                                         styleClass="ui-priority-primary">
+                        </p:commandButton>
+                     </p:column>
+                  </p:dataTable>
+                  <br/>
+                  <p:commandButton style="float: right" id="save" value="Editar comentário" tyleClass="ui-priority-primary"
+                                   action="#{avaliacaoBean.update}" icon="ui-icon-disk" update="growl">
+                     <f:ajax execute="@form" render="@form"/>
+                  </p:commandButton>
+               </h:form>
+            </div>
+            <div class="ui-g-2">
+            </div>
+         </div>
+         <h3>Faça um comentário sobre o local!</h3>
+         <div class="ui-g">
+            <div class="ui-g-2">
+            </div>
+            <div class="ui-g-8">
+               <h:form id="add">
+                  <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+                     <p:outputLabel for="comentario"/>
+                     <p:inputText type="text" style="width: 500px; height: 150px" id="comentario" value="#{avaliacaoBean.avaliacao.comentario}"/>
+                     <p:message for="comentario"/>
+
+                     <p:outputLabel for="nota"/>
+                     <h:selectOneMenu id="nota" value="#{avaliacaoBean.avaliacao.nota}">
+                        <f:selectItem itemValue="1" itemLabel="1" />
+                        <f:selectItem itemValue="2" itemLabel="2" />
+                        <f:selectItem itemValue="3" itemLabel="3" />
+                        <f:selectItem itemValue="4" itemLabel="4" />
+                        <f:selectItem itemValue="5" itemLabel="5" />
+                     </h:selectOneMenu>
+                     <p:message for="nota"/>
+
+                     <p:commandButton value="VOLTAR PARA CATEGORIAS" id="categoria" action="/ponto-turistico.xhtml?faces-redirect=true" ajax="false" />
+
+                     <p:commandButton update="@form :avaliacoes:avaliacaoLista" value="Adicionar Comentário"
+                                      action="#{avaliacaoBean.add}">
+                     </p:commandButton>
+
+                  </h:panelGrid>
+               </h:form>
+            </div>
+            <div class="ui-g-2">
+            </div>
+         </div>
+      </p:outputPanel>
+   </h:body>
+</f:view>
+</html>

@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+   <h:head>
+      <h:outputStylesheet>
+         th, td {
+            text-align: center;
+         }
+
+         h3, h1 {
+            margin-top: 0;
+            text-align: center;
+         }
+
+         input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing:border-box;
+            -moz-box-sizing: border-box;
+         }
+
+      </h:outputStylesheet>
+   </h:head>
+   <h:body style="background-image: url('https://odefensor.com.br/site/wp-content/uploads/2019/06/happyhour.jpg'); background-repeat: no-repeat; background-size: 100% 100%">
+      <p:outputPanel>
+         <h1>Gulliver Traveller - Categoria Vida Noturna
+         </h1>
+         <div class="ui-g">
+            <div class="ui-g-2"/>
+            <div class="ui-g-8">
+
+               <div class="ui-g-6">
+                  <h:graphicImage library="images" name="skye-bar.jpg" width="400px" height="300px"/>
+               </div>
+
+               <strong>BREVE DESCRIÇÃO: </strong>
+               <br/>
+               O Hotel Unique e um hotel localizado na cidade brasileira de São Paulo. É muito conhecido pela sua ousada característica arquitetônica, em formato de barco e abriga 95 apartamentos, sendo 10 suítes, e em seu terraço encontra-se o restaurante Skye.
+               A arquitetura marcante ainda conta com enormes janelas circulares, dando uma visão panorâmica da região dos Jardins.
+               <br/>               <br/>
+
+               <strong> HORÁRIO DE FUNCIONAMENTO</strong>
+               SEG- DOM 12HRS - 21HRS
+               <br/><br/>
+               <strong>ENDEREÇO:</strong>               <br/>
+               Av. Brigadeiro Luís Antônio, 4700 - Jardim Paulista, São Paulo - SP, 01402-002
+               <br/><br/>
+               <strong>PREÇOS APLICADOS:</strong><br/>
+               Em média: R$115,00
+               <h:form id="avaliacoes">
+                  <p:growl id="growl" sticky="true" />
+
+                  <p:dataTable id="avaliacaoLista" var="avaliacao" value="#{avaliacaoBean.avaliacoes}">
+
+                     <p:column headerText="Comentários">
+                        <p:inputText id="comentarioInput" value="#{avaliacao.comentario}"/>
+                     </p:column>
+
+                     <p:column headerText="Nota">
+                        <p:inputText id="notaInput" value="#{avaliacao.nota}"/>
+                     </p:column>
+
+                     <p:column>
+                        <p:commandButton update="avaliacaoLista" value="Delete" icon="ui-icon-closethick"
+                                         action="#{avaliacaoBean.delete(avaliacao)}"
+                                         styleClass="ui-priority-primary">
+                        </p:commandButton>
+                     </p:column>
+                  </p:dataTable>
+                  <br/>
+                  <p:commandButton style="float: right" id="save" value="Editar comentário" tyleClass="ui-priority-primary"
+                                   action="#{avaliacaoBean.update}" icon="ui-icon-disk" update="growl">
+                     <f:ajax execute="@form" render="@form"/>
+                  </p:commandButton>
+               </h:form>
+            </div>
+            <div class="ui-g-2">
+            </div>
+         </div>
+         <h3>Faça um comentário sobre o local!</h3>
+         <div class="ui-g">
+            <div class="ui-g-2">
+            </div>
+            <div class="ui-g-8">
+               <h:form id="add">
+                  <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+                     <p:outputLabel for="comentario"/>
+                     <p:inputText type="text" style="width: 500px; height: 150px" id="comentario" value="#{avaliacaoBean.avaliacao.comentario}"/>
+                     <p:message for="comentario"/>
+
+                     <p:outputLabel for="nota"/>
+                     <h:selectOneMenu id="nota" value="#{avaliacaoBean.avaliacao.nota}">
+                        <f:selectItem itemValue="1" itemLabel="1" />
+                        <f:selectItem itemValue="2" itemLabel="2" />
+                        <f:selectItem itemValue="3" itemLabel="3" />
+                        <f:selectItem itemValue="4" itemLabel="4" />
+                        <f:selectItem itemValue="5" itemLabel="5" />
+                     </h:selectOneMenu>
+                     <p:message for="nota"/>
+
+                     <p:commandButton value="VOLTAR PARA CATEGORIAS" id="categoria" action="/ponto-turistico.xhtml?faces-redirect=true" ajax="false" />
+
+                     <p:commandButton update="@form :avaliacoes:avaliacaoLista" value="Adicionar Comentário"
+                                      action="#{avaliacaoBean.add}">
+                     </p:commandButton>
+
+                  </h:panelGrid>
+               </h:form>
+            </div>
+            <div class="ui-g-2">
+            </div>
+         </div>
+      </p:outputPanel>
+   </h:body>
+</f:view>
+</html>

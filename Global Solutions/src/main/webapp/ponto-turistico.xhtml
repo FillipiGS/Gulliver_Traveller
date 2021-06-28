@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+   <h:head>
+      <h:outputStylesheet>
+         th, td {
+            text-align: center;
+         }
+
+         h3, h1 {
+            margin-top: 0;
+            text-align: center;
+         }
+
+         input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing:border-box;
+            -moz-box-sizing: border-box;
+         }
+
+      </h:outputStylesheet>
+   </h:head>
+   <h:body style="background-image: url('https://free4kwallpapers.com/uploads/originals/2020/06/01/ibirapuera-park-brazil-wallpaper.jpg')">
+      <p:outputPanel>
+         <h1>Gulliver Traveller</h1>
+         <div class="ui-g">
+            <div class="ui-g-2"/>
+            <div class="ui-g-8">
+               <h:form id="categoria">
+                  <h3 style="color: azure">Selecione sua categoria favorite e iremos te apresentar o melhor ponto turístico de SP!</h3>
+                  <div class="ui-g">
+                     <div class="ui-g-2">
+                        <p:commandButton value="HISTÓRIA" id="categoria-historia" action="/categoria-historia.xhtml?faces-redirect=true" ajax="false" />
+                     </div>
+                     <div class="ui-g-2">
+                        <p:commandButton value="CULTURA" id="categoria-cultura" action="/categoria-cultura.xhtml?faces-redirect=true" ajax="false" />
+                     </div>
+                     <div class="ui-g-2">
+                        <p:commandButton value="PARQUES" id="categoria-parques" action="/categoria-parque.xhtml?faces-redirect=true" ajax="false" />
+                     </div>
+                     <div class="ui-g-2">
+                        <p:commandButton value="GASTRONOMIA" id="categoria-gastronomia" action="/categoria-gastronomia.xhtml?faces-redirect=true" ajax="false" />
+                     </div>
+                     <div class="ui-g-2">
+                        <p:commandButton value="VIDA NOTURNA" id="categoria-vida-noturna" action="/categoria-vida-noturna.xhtml?faces-redirect=true" ajax="false" />
+                     </div>
+                     <div class="ui-g-2">
+                        <p:commandButton value="ENTRETENIMENTO" id="categoria-entretenimento" action="/categoria-entretenimento.xhtml?faces-redirect=true" ajax="false" />
+                     </div>
+                  </div>
+               </h:form>
+            </div>
+            <div class="ui-g-2">
+            </div>
+         </div>
+      </p:outputPanel>
+   </h:body>
+</f:view>
+</html>

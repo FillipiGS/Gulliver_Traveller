@@ -1,7 +1,7 @@
-package de.rieckpil.blog.customers.model;
+package br.com.fiap.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
 @Entity
@@ -12,25 +12,21 @@ public class Avaliacao {
   private Long id;
 
   @Column(nullable = false)
-  @NotEmpty
   private String comentario;
 
   @Column(nullable = false)
-  @NotEmpty
   private double nota;
 
-  @Column(nullable = false)
-  @NotEmpty
+  @Past
   private LocalDate dataComentario;
-  
-  
+
+  @Column(nullable = false)
   private String avaliacaoID;
   
   public Avaliacao(){}
   
   
-public Avaliacao(@NotEmpty String comentario, @NotEmpty double nota, @NotEmpty LocalDate dataComentario,
-		String avaliacaoID) {
+public Avaliacao(String comentario, double nota, LocalDate dataComentario, String avaliacaoID) {
 	this.comentario = comentario;
 	this.nota = nota;
 	this.dataComentario = dataComentario;
