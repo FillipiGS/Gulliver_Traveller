@@ -22,47 +22,66 @@ public class Avaliacao {
   @Column(nullable = false)
   @NotEmpty
   private LocalDate dataComentario;
+  
+  
+  private String avaliacaoID;
+  
+  public Avaliacao(){}
+  
+  
+public Avaliacao(@NotEmpty String comentario, @NotEmpty double nota, @NotEmpty LocalDate dataComentario,
+		String avaliacaoID) {
+	this.comentario = comentario;
+	this.nota = nota;
+	this.dataComentario = dataComentario;
+	this.avaliacaoID = avaliacaoID;
+}
 
-  public Avaliacao(){
 
-  }
 
-  public Avaliacao(Long id, String comentario, double nota, LocalDate dataComentario) {
-    this.id = id;
-    this.comentario = comentario;
-    this.nota = nota;
-    this.dataComentario = dataComentario;
-  }
 
-  public Long getId() {
-    return id;
-  }
+public Long getId() {
+	return id;
+}
 
-  public void setId(Long id) {
-    this.id = id;
-  }
 
-  public String getComentario() {
-    return comentario;
-  }
+public void setId(Long id) {
+	this.id = id;
+}
 
-  public void setComentario(String comentario) {
-    this.comentario = comentario;
-  }
 
-  public double getNota() {
-    return nota;
-  }
+public String getComentario() {
+	return comentario;
+}
 
-  public void setNota(double nota) {
-    this.nota = nota;
-  }
+public void setComentario(String comentario) {
+	this.comentario = comentario;
+}
 
-  public LocalDate getDataComentario() {
-    return dataComentario;
-  }
+public double getNota() {
+	return nota;
+}
 
-  public void setDataComentario(LocalDate dataComentario) {
-    this.dataComentario = dataComentario;
-  }
+public void setNota(double nota) {
+	this.nota = nota;
+}
+
+public LocalDate getDataComentario() {
+	return dataComentario;
+}
+
+public void setDataComentario(LocalDate dataComentario) {
+	this.dataComentario = dataComentario;
+}
+
+public String getAvaliacaoID() {
+	return avaliacaoID;
+}
+
+public void setAvaliacaoID(String avaliacaoID) {
+	this.avaliacaoID = avaliacaoID;
+}
+  
+  
+  
 }
